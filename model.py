@@ -2,11 +2,8 @@ from sklearn.linear_model import LogisticRegression
 import itertools
 import numpy as np
 from comparer import PMD
-
-pmd = PMD()
-compare_funs = pmd.get_compare_fun()
-
 import sys
+from tqdm import tqdm
 
 
 def eprint(*args, **kwargs):
@@ -30,6 +27,8 @@ FIELDS = [
     "Zip Code",
 ]
 
+pmd = PMD()
+compare_funs = pmd.get_compare_fun()
 FIELDS = [(f, compare_funs[f]) for f in FIELDS]
 GROUND_TRUTH = "GroupID"
 
@@ -54,7 +53,7 @@ def _is_match(z1, z2):
     """Given two dictionaries with ground truth group ID, return whether its
     a match.
     """
-    return z1[GROUND_TRUTH] == z2[GROUND_TRUTH]
+    return 1 if z1[GROUND_TRUTH] == z2[GROUND_TRUTH] else 0
 
 
 def cmax(x1, x2):
@@ -81,29 +80,15 @@ def _similarity(w1, w2):
 
 class Model:
     def __init__(self):
-        self.clf = LogisticRegression(random_state=0)
+        self.clf = LogisticRegression(random_state=0, verbose=True)
 
     def fit(self, Z):
         X, y = [], []
-        for z1, z2 in itertools.product(Z, repeat=2):
+        for z1, z2 in tqdm(itertools.product(Z, repeat=2)):
             X.append(_similarity(z1, z2))
             y.append(_is_match(z1, z2))
+        eprint("Created training set, now fitting")
         self.clf.fit(X, y)
 
     def predict(self, w1, w2):
         return self.clf.predict(_similarity(w1, w2).reshape(1, -1))[0]
-
-
-import random
-
-Z = []
-for _ in range(10):
-    z = {}
-    for f, _ in FIELDS:
-        for x in get_versions(f):
-            z[x] = random.choice(["bob", "alice", "smokey"])
-    z["GroupID"] = random.choice([1, 2, 3])
-    Z.append(z)
-
-m = Model()
-m.fit(Z)

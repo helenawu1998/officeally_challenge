@@ -21,10 +21,6 @@ class PMD:
     def similarity(self, name1, name2, lev_only=False):
         # They both have only characters, then soundex is a good fit.
         if name1.isalpha() and name2.isalpha() and not lev_only:
-            print(
-                self.similarity_soundex(name1, name2),
-                self.similarity_levenshtein(name1, name2),
-            )
             return max(
                 self.similarity_soundex(name1, name2),
                 self.similarity_levenshtein(name1, name2),
@@ -56,11 +52,6 @@ class PMD:
         for enum, street_arr in enumerate([street1_arr, street2_arr]):
             for i in street_arr:
                 hashed_street[enum] += unique_mapping[i]
-        print(
-            self.similarity(hashed_street[0], hashed_street[1], lev_only=True),
-            self.similarity(street1, street2, lev_only=True),
-            1 if street1 == "" or street2 == "" else 0,
-        )
         return (
             max(
                 self.similarity(hashed_street[0], hashed_street[1], lev_only=True),
@@ -87,7 +78,6 @@ class PMD:
         ]
 
     def similarity_alnum(self, str1, str2, threshold=0.69):
-        print(str1, str2)
         score = self.similarity(
             self.prelim_cleaning(str1), self.prelim_cleaning(str2), lev_only=True
         )
@@ -102,9 +92,8 @@ class PMD:
         (score, empty) = self.similarity_street_helper(
             self.prelim_cleaning(str1), self.prelim_cleaning(str2)
         )
-        print(score)
         return [
-            1 if score > threshold and not empty else 0 ,
+            1 if score > threshold and not empty else 0,
             1 if score <= threshold and not empty else 0,
             empty,
         ]

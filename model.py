@@ -1,26 +1,37 @@
 from sklearn.linear_model import LogisticRegression
 import itertools
 import numpy as np
+from comparer import PMD
+
+pmd = PMD()
+compare_funs = pmd.get_compare_fun()
+
+import sys
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 
 def placeholder(s1, s2):
     return 1 if len(s1) == len(s2) else 0
 
 
-GROUND_TRUTH = "GroupID"
-
 FIELDS = [
-    ("Patient Acct #", False, placeholder),
-    ("First Name", True, placeholder),
-    ("MI", True, placeholder),
-    ("Last Name", True, placeholder),
-    ("Date of Birth", False, placeholder),
-    ("Sex", False, placeholder),
-    ("Street", True, placeholder),
-    ("City", True, placeholder),
-    ("State", True, placeholder),
-    ("Zip Code", True, placeholder),
+    "Patient Acct #",
+    "First Name",
+    "MI",
+    "Last Name",
+    "Date of Birth",
+    "Sex",
+    "Street",
+    "City",
+    "State",
+    "Zip Code",
 ]
+
+FIELDS = [(f, compare_funs[f]) for f in FIELDS]
+GROUND_TRUTH = "GroupID"
 
 
 def get_versions(field):
@@ -46,17 +57,26 @@ def _is_match(z1, z2):
     return z1[GROUND_TRUTH] == z2[GROUND_TRUTH]
 
 
+def cmax(x1, x2):
+    assert x1.shape == (3,), "Assuming we have 3 cases (match, not match, missing)"
+    assert x2.shape == (3,), "Assuming we have 3 cases (match, not match, missing)"
+    for z in np.eye(3, dtype=int):
+        if np.array_equal(x1, z) or np.array_equal(x2, z):
+            return z
+    assert False, "Should never get to this point"
+
+
 def _similarity(w1, w2):
     """Given two dictionaries representing patients, compute the similarity
-    vector.
+    matrix. Dimensions = #FIELDS x 3. Returns as a flattened array (1-hot trick)
     """
-    v = np.zeros(len(FIELDS))
-    for i, (field, _, fn) in enumerate(FIELDS):
+    v = np.zeros((len(FIELDS), 3), dtype=int)
+    for i, (field, fn) in enumerate(FIELDS):
         f1 = [w1[x] for x in get_versions(field)]
         f2 = [w2[x] for x in get_versions(field)]
         for x1, x2 in itertools.product(f1, f2):
-            v[i] = max(v[i], fn(x1, x2))
-    return v
+            v[i] = cmax(v[i], np.array(fn(x1, x2)))
+    return v.flatten()
 
 
 class Model:
@@ -79,7 +99,7 @@ import random
 Z = []
 for _ in range(10):
     z = {}
-    for f, _, _ in FIELDS:
+    for f, _ in FIELDS:
         for x in get_versions(f):
             z[x] = random.choice(["bob", "alice", "smokey"])
     z["GroupID"] = random.choice([1, 2, 3])

@@ -17,17 +17,23 @@ def make_db():
         cursorclass=pymysql.cursors.DictCursor)
 
 
-with open('Patient Matching Data.csv', newline='') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-
-
 class PMD:
     def __init__(self):
         self.soundex = Soundex()
+        self.nicknames = {}
+        self.read_nicknames()
+
+    def read_nicknames(self):
+        with open('nicknames.csv', newline='') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in spamreader:
+                self.nicknames[row[0]] = row[1:]
+                self.nicknames[row[0]].append(row[0])
 
     def similarity(self, name1, name2, lev_only = False):
         # They both have only characters, then soundex is a good fit.
         if name1.isalpha() and name2.isalpha() and not lev_only:
+            print(self.similarity_soundex(name1, name2), self.similarity_levenshtein(name1, name2))
             return max(self.similarity_soundex(name1, name2), self.similarity_levenshtein(name1, name2))
         return self.similarity_levenshtein(name1, name2)
 
@@ -60,7 +66,15 @@ class PMD:
 
     def similarity_names(self, name1, name2, threshold):
         empty  = 1 if name1 == "" or name2 == "" else 0
-        score = self.similarity(self.prelim_cleaning(name1, alpha_only=True), self.prelim_cleaning(name1, alpha_only=True))
+        name1 = self.prelim_cleaning(name1, alpha_only=True)
+        name2 = self.prelim_cleaning(name2, alpha_only=True)
+        score = 0
+        if len(name1) > len(name2):
+            temp = name1
+            name1 = name2
+            name2 = temp
+        for i in self.nicknames.get(name1, [name1]):
+            score = max(self.similarity(i, name2), score)
         return [1 if score > threshold else 0, 1 if score <= threshold and not empty else 0, empty]
 
     def similarity_alnum(self, str1, str2, threshold):
@@ -122,11 +136,11 @@ class PMD:
 
         alnum = ["Patient Acct #", "Date of Birth", "City", "Zip Code"]
 
-        returned_field = ["Patient Acct #","First Name","MI","Last Name", "Date of Birth","Sex", "Street", "City", "State","Zip Code"]
+        returned_field = ["Patient Acct #","First Name","MI","Last Name",
+        "Date of Birth","Sex", "Street", "City", "State","Zip Code"]
 
         for i in simple_match_fields:
             result[i] = self.similarity_names
-
 
         for i in alnum:
             result[i] = self.similarity_alnum

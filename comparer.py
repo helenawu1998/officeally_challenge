@@ -35,7 +35,8 @@ class PMD:
         return 1 - self.soundex.distance(name1, name2) / 4
 
     def similarity_levenshtein(self, name1, name2):
-        return 1 - Levenshtein.distance(name1, name2) / max(len(name1), len(name2))
+
+        return 1 - Levenshtein.distance(name1, name2) / max(len(name1), len(name2), 1)
 
     def similarity_street_helper(self, street1, street2):
         # We make every word into a unqiue character, and get the Levenshtein
@@ -80,7 +81,7 @@ class PMD:
         for i in self.nicknames.get(name1, [name1]):
             score = max(self.similarity(i, name2), score)
         return [
-            1 if score > threshold else 0,
+            1 if score > threshold and not empty else 0,
             1 if score <= threshold and not empty else 0,
             empty,
         ]
@@ -92,7 +93,7 @@ class PMD:
         )
         empty = 1 if str1 == "" or str2 == "" else 0
         return [
-            1 if score > threshold else 0,
+            1 if score > threshold else 0 and not empty,
             1 if score <= threshold and not empty else 0,
             empty,
         ]
@@ -103,7 +104,7 @@ class PMD:
         )
         print(score)
         return [
-            1 if score > threshold else 0,
+            1 if score > threshold else 0 and not empty,
             1 if score <= threshold and not empty else 0,
             empty,
         ]

@@ -93,7 +93,7 @@ class PMD:
         )
         empty = 1 if str1 == "" or str2 == "" else 0
         return [
-            1 if score > threshold else 0 and not empty,
+            1 if score > threshold and not empty else 0,
             1 if score <= threshold and not empty else 0,
             empty,
         ]
@@ -104,7 +104,7 @@ class PMD:
         )
         print(score)
         return [
-            1 if score > threshold else 0 and not empty,
+            1 if score > threshold and not empty else 0 ,
             1 if score <= threshold and not empty else 0,
             empty,
         ]

@@ -1,20 +1,8 @@
 import csv
-import pymysql
 from pyphonetics import Soundex
 from standardAbbr import address_abbr, state_abbr, gender_abbr
 import Levenshtein
 import string
-
-def make_db():
-    return pymysql.connect(
-        host='localhost',
-        database="lahacks",
-        user="lahacks",
-        password="1234567",
-        db='db',
-        autocommit=True,
-        charset='utf8mb4',
-        cursorclass=pymysql.cursors.DictCursor)
 
 
 class PMD:

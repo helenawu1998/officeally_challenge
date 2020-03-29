@@ -24,8 +24,11 @@ pip install -r requirements.txt
 We worked on two distinct approaches: one similar to the Office Ally POC algorithm, and our novel approach.
 
 ## Office Ally POC algorithm (Challenge 1 - Algorithm 1 code)
-- This will create a file called patient_matching.db that will serve as local SQLite database. 
-- This will generate output file "Post_Patient_Matching_Groups.csv" with the final matchings. Additionally, the data will be loaded into the "matched_patients" SQL table.
+- This approach will:
+1) Create a file called patient_matching.db, a local SQLite database
+2) Load the original data into the "patients" table
+3) Run POC-inspired patient matching algorithm
+4) Generate output file "Post_Patient_Matching_Groups.csv" with the final matchings, and populate "matched_patients" table.
 - Run patient matching algorithm from the Challenge 1 - Algorithm 1 folder. 
 ```
 python3 run.py "Patient_Matching_Data.csv"

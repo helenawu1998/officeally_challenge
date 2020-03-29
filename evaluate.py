@@ -11,15 +11,25 @@ class DSU:
     """
 
     def __init__(self, n):
+        """
+        Initialize DSU for an n element universe.
+        """
         self.fa = [x for x in range(n)]
 
     def find(self, x):
+        """
+        Given an element x, return an identifier for the set that x belongs to.
+        """
         if x == self.fa[x]:
             return x
         self.fa[x] = self.find(self.fa[x])
         return self.fa[x]
 
     def union(self, x, y):
+        """
+        Given two elements x and y, find the two sets containing x and y and
+        union them together.
+        """
         a = self.find(x)
         b = self.find(y)
         self.fa[b] = a

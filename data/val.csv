@@ -1,0 +1,52 @@
+GroupID,PatientID,Patient Acct #,First Name,MI,Last Name,Date of Birth,Sex,Current Street 1,Current Street 2,Current City,Current State,Current Zip Code,Previous First Name,Previous MI,Previous Last Name,Previous Street 1,Previous Street 2,Previous City,Previous State,Previous Zip Code
+46,151,862216275-3,Konstantin,Samuel,Kordt,8/28/1938,Male,942 Homewood Street,,Salt Lake City,Utah,84115,,,,6 Charing Cross Court,15504,Dayton,Ohio,45419
+46,152,,Konstantin,S,Kordt,8/28/1938,Unknown,,,Salt Lake City,UT,84115,,,,,,,,45419
+46,153,,Konstantin,S,Kordt,8/28/1938,U,942 Homewood St,,,UT,84115,,,,6 Charing Cross Ct,APT #15504,Dayton,OH,
+46,154,5887481125,Konstentin,,Kort,8/28/1939,,942 Homewood Street,,Salt Lake City,UT,84115,,,,6 Charing Cross Court Apt 15504,,Dayton,OH,45419
+47,155,570925745-1,Ailsun,,Dovydenas,6/25/1937,Female,1 Bowman Junction,,Austin,Texas,78749,,,,4004 Fulton Junction,2577,Long Beach,California,90810
+47,156,584213133,Alison,J,Dovydenas,6/25/1937,,1 Bowman Junction,,Austin,TX,78749,Victoria,,Tuttle,2614 Frosty Lane,,Long Beach,CA,90810
+47,157,884123551-1,Ailsun,J,,6/25/1937,Female,,,Austin,Texas,78749,,,,,,Long Beach,California,90810
+47,158,,Ailsun,,Dovydenas,6/25/1937,Female,1 Bowman Junction,#1412,Austin,TX,78749,,,,4004 Fulton Junction APT2577,,Long Beach,CA,90810
+48,159,497286899-6,Dionne,,Cockcroft,6/25/1988,Female,97576 Parkside Place,,Tulsa,Oklahoma,74108,,,,9 Melby Alley,96,Huntsville,Texas,77343
+48,160,,Diane,,Cockcroft,6/25/1988,,97576 Parkside Pl,,Tulsa,OK,74108,,,,9 Melby Alley,,Huntsville,TX,77343
+48,161,497286899-6,Dionne,,Cockcroft,6/28/198+,F,97576 Parkside Place,,Tulsa,Oklahoma,74108,,,,9 Melby Alley,96,Huntsville,TX,77343
+49,162,826795742-1,Hastings,,Meggison,10/31/1936,Male,7 Forest Run Parkway,,Dallas,Texas,75342,,,,1778 Helena Parkway,56,Tulsa,Oklahoma,74116
+49,163,,Meggison,,Hastings,10/31/1936,,7 Forest Run Parkway,,Dales,Texas,75342,,,,1778 Helena Parkway APT #56,,Tulsa,Oklahoma,74116
+49,164,,Hastings,,Meggison,10/31/1936,Male,7 Forest Run Parkway,,Dallas,Texas,75342,,,,1778 Helena Parkway,APT56,Tulsa,Oklahoma,74116
+49,165,,Hastings,,Megison,10/31/1936,M,,,Dallas,TX,75342,,,,1778 Helena Parkway,,Tulsa,OK,74116
+50,166,,Hastings,K,Meggison,10/31/1955,F,1511 Meadow View Dr,,Hartford,CT,6182,,,,,,Tulsa,Oklahoma,74116
+51,167,284308577-2,Flori,,Matuskiewicz,5/20/1984,Female,45863 Gerald Pass,,Grand Rapids,Michigan,49518,Flori,,Williamson,628 Portage Street,954,Bakersfield,California,93399
+51,168,,Flori,,Matsukiwicks,5/20/1984,,45863 Gerald Pass,,Grand Rapids,MI,,,,,,,,,
+52,169,155349524-1,Anne-marie,,Keig,8/15/1932,Female,474 Annamark Avenue,,Conroe,Texas,77305,,,,94007 Golf Course Hill,139,Montgomery,Alabama,36119
+52,170,458746512,Anne,,Keig,8/15/1935,F,474 Annamark Ave,,Conroe,TX,77305,,,,94007 Golf Course Hill apt 139,,Montgomery,AL,36119
+52,171,,Anne,M,Keig,8/15/1932,,474 Annamark Ave,,,TX,77305,,,,94007 Golf Course Hill,,Montgomery,Alabama,36119
+53,172,404591211-8,Berti,,Lockie,11/13/1983,Female,2729 Springs Junction,,Arlington,Virginia,22234,,,,5 Sloan Crossing,401,Dallas,Texas,75342
+53,173,,Berti,,Lockee,11/13/1983,,2729 Springs Junction,,Arlington,VA,,,,,5 Sloan Crossing,,Dallas,TX,
+53,174,,Berti,,Locki,11/13/1983,F,2729 Springs Junction,,Arlington,Virginia,22234,,,,5 Sloan Crossing,401,Dallas,Texas,75342
+53,175,48521534889,Berti,,Lockie,10/13/19/3,F,2729 Springs Junction,,arlinton,VA,22234,,,,5 Sloan Crossing,APT401,Dallas,TX,75342
+54,176,265234041-7,Zarah,,Dake,6/29/2010,Female,334 Pearson Lane,,Stockton,California,95219,Michael,,Dake,8305 Park Meadow Crossing,7,Minneapolis,Minnesota,55480
+54,177,,Sarah,,Dake,6/29/2010,F,334 Pearson Ln,,Stockton,,95219,,,,8305 Park Meadow Crossing,APT #7,Mineapolis,,55480
+54,178,265234041-7,Sara,,Drake,6/29/2010,,334 Pearson Ln,,Stockton,California,,,,,8305 Park Meadow Crossing,,Minneapolis,Minnesota,
+55,179,361284643-4,Madison,Gena,Pybus,12/30/1937,Male,14 Cardinal Terrace,,Portland,Oregon,97211,,,,121 Emmet Way,615,Sioux City,Iowa,51110
+55,180,,Maddie,G,Pybus,12/30/1937,,14 Cardinal Terace,,PDX,OR,9721,,,,121 Emmet Way,,Sioux City,IA,51110
+55,181,584121154-1,Madison,,P,12/20/1937,,14 Cardinal Terrace,,Portland,PR,,,,,,,,Iowa,
+55,182,,Madison,,Piebus,12/30/1937,M,14 Cardinal Terrace,,Portland,Oregon,97211,,,,121 Emmet Way,615,Sioux City,Iowa,51110
+56,183,488721348,Madison,Q,Pybus,5/24/2013,Female,4454 Spadafore Dr,,Vancouver,WA,98683,,,,,,,,
+57,184,101138829-4,Early,,Burnyeat,9/26/1991,,66 Pierstorff Ave,,New Castle,PA,16107,,,,,,,,
+57,185,101518532,Earlie,J,Burnyeat,9/26/1991,,66 Pierstorff Avenue,,New Castle,PA,16107,,,,,,,,
+57,186,101138829-6,Hearly,J,Burniet,9/26/19991,,66 Pierstorff Ave,Apartment 569,New Castle,PA,1610,,,,,,,,
+58,187,PAT10222JV,J,,Vu,12/15/1970,Female,1619 78th Road,,Vancouver,WA,98683,,,,,,,,
+58,188,PAT10222JV,J,,Vu,12/15/1970,Female,1619 78th Rd,,Vancouver,WA,98683,,,,,,,,
+58,189,,Ja,,Vue,12/15/1970,Female,1619 78th Rode,,Vancouver,WA,98683,,,,,,,,
+58,190,,Jah,,Vu,12/15/1970,Female,1619 78th Roed,,Vancouver,WA,98683,,,,,,,,
+59,191,1000TF1,T.J.,S,Fry,5/5/1986,Female,12405 Teiter Heights E,,Kelso,WA,98626,,,,,,,,
+59,192,,T-Jay,S,Fry,5/5/1986,Female,12405 Teiter Heights E,,Kelso,WA,98626,,,,,,,,
+59,193,,T-J,Sarah,Frye,5/5/1986,Female,12405 Teiter Heights E,,Kelso,WA,98626,,,,,,,,
+59,194,,TJ,Sara,Fry,5/5/1986,Female,12405 Teiter Heights E,,Kelso,WA,98626,,,,,,,,
+60,195,,Todd,,Jones,12/1/2015,Male,15424 Jeffies Lane,Apt 2,Vancouver,WA,98683,,,,,,,,
+60,196,,Tom,,Jones,12/1/2015,Male,15424 Jeffies Lane,Apt 2,Vancouver,WA,98683,,,,,,,,
+61,197,,Bill,,Smith,5/16/1972,Male,16595 City View Lane,,Vancouver,WA,98684,,,,,,,,
+62,198,,Bill,,Smith,5/16/1972,Male,,,,,,,,,,,,,
+63,199,,Sarah,,Field,3/17/2010,Female,9850 Kelso Road,,Kelso,WA,98626,,,,,,,,
+64,200,,Sara,,Field,3/17/2010,Female,,,,,,,,,,,,,
+65,201,,Sara,,Field,3/17/2010,Female,,,,,,,,,,,,,

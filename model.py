@@ -4,6 +4,7 @@ import numpy as np
 from comparer import PMD
 import sys
 from tqdm import tqdm
+import joblib
 
 
 def eprint(*args, **kwargs):
@@ -92,3 +93,12 @@ class Model:
 
     def predict(self, w1, w2):
         return self.clf.predict(_similarity(w1, w2).reshape(1, -1))[0]
+
+    def predict_proba(self, w1, w2):
+        return self.clf.predict_proba(_similarity(w1, w2).reshape(1, -1))[0]
+
+    def save(self, filename):
+        joblib.dump(self.clf, filename)
+
+    def load(self, filename):
+        self.clf = joblib.load(filename)

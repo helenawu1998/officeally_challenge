@@ -1,7 +1,9 @@
 from model import Model
 import pandas as pd
 
-df = pd.read_csv("data/data.csv", dtype=str)
+train_file = "data/train.csv"
+
+df = pd.read_csv(train_file, dtype=str)
 df = df.fillna("")
 Z = []
 for _, row in df.iterrows():
@@ -11,3 +13,4 @@ for _, row in df.iterrows():
     Z.append(z)
 m = Model()
 m.fit(Z)
+m.save("models/model.joblib")

@@ -110,10 +110,11 @@ class PMD:
     def similarity_sex(self, str1, str2, threshold=0.69):
         str1 = self.clean_gender(self.prelim_cleaning(str1))
         str2 = self.clean_gender(self.prelim_cleaning(str2))
+        empty = str1 == "" or str2 == ""
         return [
-            1 if str1 == str2 else 0,
-            1 if str1 != str2 else 0,
-            0 if str1 == "" or str2 == "" else 0,
+            1 if str1 == str2 and not empty else 0,
+            1 if str1 != str2 and not empty else 0,
+            1 if empty else 0,
         ]
 
     # Clean up street names by changing the abbrevations

@@ -3,7 +3,7 @@ from pyphonetics import Soundex
 from standardAbbr import address_abbr, state_abbr, gender_abbr
 import Levenshtein
 import string
-
+import regex
 
 class PMD:
     def __init__(self):
@@ -70,7 +70,8 @@ class PMD:
             name1 = name2
             name2 = temp
         for i in self.nicknames.get(name1, [name1]):
-            score = max(self.similarity(i, name2), score)
+            for j in self.nicknames.get(name2, [name2]):
+                score = max(self.similarity(i, j), score)
         return [
             1 if score > threshold and not empty else 0,
             1 if score <= threshold and not empty else 0,
@@ -130,6 +131,11 @@ class PMD:
     def clean_gender(self, gender):
         return gender_abbr.get(gender, gender)
 
+    def clean_dob(self, dob):
+        # We want to convert everything to MM/DD/YYYY
+        #regex.match(r'[^\]]{2}/[^\]]{2}/[^\]]{4}', "11/11/1193")
+        return gender_abbr.get(gender, gender)
+
     def prelim_cleaning(self, strr, alpha_only=False):
         strr = strr.lower()
         if alpha_only:
@@ -173,7 +179,7 @@ class PMD:
 
         streets = [
             "Current Street 1",
-            "	Current Street 2",
+            "Current Street 2",
             "Previous Street 1",
             "Previous Street 2",
         ]

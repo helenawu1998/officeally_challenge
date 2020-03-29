@@ -1,9 +1,18 @@
 from model import Model
 import pandas as pd
+import argparse
 
-train_file = "data/train.csv"
+parser = argparse.ArgumentParser(description="LA Hacks 2020 Patient Matching training")
+parser.add_argument(
+    "--data",
+    dest="data_file",
+    type=str,
+    help="Training csv file (with ground-truth GroupIDs)",
+    required=True,
+)
+args = parser.parse_args()
 
-df = pd.read_csv(train_file, dtype=str)
+df = pd.read_csv(args.data_file, dtype=str)
 df = df.fillna("")
 Z = []
 for _, row in df.iterrows():

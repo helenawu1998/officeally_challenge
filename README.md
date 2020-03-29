@@ -19,27 +19,23 @@ source <your env name>/bin/activate
 ```
 pip install -r requirements.txt
 ```
-
-We worked on two distinct approaches: one to replicate the Office Ally POC, and our novel approach.
-
-## Replicated Office Ally POC
-### Setting up
-- Development: SQLite (with SQLAlchemy)
+- Set up database
 ```
 python3 set_up.py
 ```
 This should create a local file called patient_matching.db that will serve as your SQLite (development) database. Do not add this file to the repository.
 
-### Testing
+
+# Testing
+We worked on two distinct approaches: one to replicate the Office Ally POC, and our novel approach.
+
+## Replicated Office Ally POC
 - Run patient matching algorithm:
 ```
 python3 run.py
 ```
 
 ## Novel approach
-### Setting up
-- No set up required
-### Testing
 - Run patient matching algorithm:
 ```
 python evaluate.py --input <your input file here> --output <your output file here>

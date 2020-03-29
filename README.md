@@ -20,7 +20,7 @@ source <your env name>/bin/activate
 pip install -r requirements.txt
 ```
 
-# Testing
+# Proof of Concept
 We worked on two distinct approaches: one similar to the Office Ally POC algorithm, and our novel approach.
 
 ## Office Ally POC algorithm (Challenge 1 - Algorithm 1 code)

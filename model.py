@@ -6,7 +6,6 @@ import sys
 from tqdm import tqdm
 import joblib
 
-
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
@@ -32,6 +31,7 @@ pmd = PMD()
 compare_funs = pmd.get_compare_fun()
 FIELDS = [(f, compare_funs[f]) for f in FIELDS]
 GROUND_TRUTH = "GroupID"
+#search = SearchEngine(simple_zipcode=True)
 
 
 def get_versions(field):
@@ -42,7 +42,7 @@ def get_versions(field):
         "First Name": ["First Name", "Previous First Name"],
         "MI": ["MI", "Previous MI"],
         "Last Name": ["Last Name", "Previous Last Name"],
-        "Street": ["Current Street", "Previous Street"],
+        "Street": ["Current Street 1", "Previous Street 1", "Current Street 2", "Previous Street 2"],
         "City": ["Current City", "Previous City"],
         "State": ["Current State", "Previous State"],
         "Zip Code": ["Current Zip Code", "Previous Zip Code"],
@@ -70,6 +70,7 @@ def _similarity(w1, w2):
     """Given two dictionaries representing patients, compute the similarity
     matrix. Dimensions = #FIELDS x 3. Returns as a flattened array (1-hot trick)
     """
+
     v = np.zeros((len(FIELDS), 3), dtype=int)
     for i, (field, fn) in enumerate(FIELDS):
         f1 = [w1[x] for x in get_versions(field)]
@@ -77,7 +78,6 @@ def _similarity(w1, w2):
         for x1, x2 in itertools.product(f1, f2):
             v[i] = cmax(v[i], np.array(fn(x1, x2)))
     return v.flatten()
-
 
 class Model:
     def __init__(self):

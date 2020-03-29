@@ -8,4 +8,4 @@ f = i.get_compare_fun()
 #print(f["Sex"]("F", "Female", .65))
 #print(f["State"]("New York", "NY", .65))
 
-print(f["First Name"]("", "", .65))
+print(f["First Name"]("Madison", "Maddie", .65))

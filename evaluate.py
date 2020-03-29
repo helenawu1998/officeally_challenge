@@ -4,6 +4,7 @@ import argparse
 from tqdm import tqdm
 
 from model import Model
+from cleaner import clean_data
 
 
 class DSU:
@@ -60,8 +61,7 @@ df = df.fillna("")
 Z = []
 for _, row in df.iterrows():
     z = dict(row)
-    z["Current Street"] = z["Current Street 1"] + " " + z["Current Street 2"]
-    z["Previous Street"] = z["Previous Street 1"] + " " + z["Previous Street 2"]
+    z = clean_data(z)
     Z.append(z)
 
 dsu = DSU(len(Z))

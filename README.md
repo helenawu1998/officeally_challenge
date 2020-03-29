@@ -37,9 +37,10 @@ python3 run.py "Patient_Matching_Data.csv"
 ```
 
 ## Novel approach
-- Run patient matching algorithm:
+- Make sure the virtualenv is activated.
+- Inside the Challenge 1 - Algorithm 2 folder, run patient matching algorithm:
 ```
-python evaluate.py --input <your input file here> --output <your output file here>
+python evaluate.py --input <your input CSV file here> --output <desired output CSV file here>
 ```
 
 ## Contact info
